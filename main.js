@@ -4,5 +4,6 @@ const list = new LinkedList();
 list.append("dog");
 list.append("cat");
 list.append("parrot");
+list.prepend("siaka");
 
-console.log(list);
+console.dir(list, { depth: null });

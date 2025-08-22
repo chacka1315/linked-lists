@@ -6,5 +6,5 @@ list.append("cat");
 list.append("parrot");
 list.prepend("siaka");
 
-console.dir(list, { depth: null });
 console.log(list.size());
+console.log(list.head);

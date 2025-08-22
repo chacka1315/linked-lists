@@ -23,4 +23,18 @@ export class LinkedList {
     this.head = new Node(value);
     this.head.nextNode = currentHead;
   }
+
+  size() {
+    if (!Object.keys(this).length) {
+      this.head = new Node(value);
+      return "The list is empty !";
+    }
+    let size = 1;
+    let currentNode = this.head;
+    while (currentNode.nextNode !== null) {
+      currentNode = currentNode.nextNode;
+      size++;
+    }
+    return `This list has ${size} nodes !`;
+  }
 }

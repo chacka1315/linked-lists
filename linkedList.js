@@ -82,4 +82,42 @@ export class LinkedList {
       }
     }
   }
+
+  contains(value) {
+    if (!this.#head) return "The list is empty !";
+    let isContains = false;
+    let node = this.#head;
+    while (node.nextNode !== null) {
+      if (node.value === value) {
+        return (isContains = true);
+      }
+      node = node.nextNode;
+    }
+    return isContains;
+  }
+
+  find(value) {
+    if (!this.#head) return "The list is empty !";
+    let index = 0;
+    let node = this.#head;
+    while (node !== null) {
+      if (node.value === value) {
+        return `Found at index : ${index}`;
+      }
+      index++;
+      node = node.nextNode;
+    }
+    return null;
+  }
+
+  toString() {
+    if (!this.#head) return "The list is empty !";
+    let listString = `( ${this.#head.value} ) --> `;
+    let node = this.#head.nextNode;
+    while (node !== null) {
+      listString += `( ${node.value} ) --> `;
+      node = node.nextNode;
+    }
+    return listString + null;
+  }
 }

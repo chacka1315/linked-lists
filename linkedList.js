@@ -35,7 +35,7 @@ export class LinkedList {
       currentNode = currentNode.nextNode;
       size++;
     }
-    return `This list has ${size} nodes !`;
+    return size;
   }
 
   get head() {
@@ -119,5 +119,61 @@ export class LinkedList {
       node = node.nextNode;
     }
     return listString + null;
+  }
+
+  insertAt(value, index) {
+    const listeSize = this.size();
+
+    if (!this.#head) return "The list is empty !";
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    } else if (index > listeSize) {
+      throw new Error(`Max index is ${listeSize}`);
+    } else if (index === this.size()) {
+      this.append(value);
+      return;
+    }
+
+    let node = this.#head.nextNode;
+    let previousNode = this.#head;
+    let count = 1;
+    while (node !== null) {
+      if (count === index) {
+        const newNode = new Node(value);
+        previousNode.nextNode = newNode;
+        newNode.nextNode = node;
+        return;
+      }
+      previousNode = node;
+      node = node.nextNode;
+      count++;
+    }
+  }
+
+  removeAt(index) {
+    const listeSize = this.size();
+    if (!this.#head) return "The list is empty !";
+    if (index === 0) {
+      this.#head = this.#head.nextNode;
+      return;
+    } else if (index > listeSize - 1) {
+      throw new Error(`Max index is ${listeSize - 1}`);
+    } else if (index === this.size() - 1) {
+      this.pop();
+      return;
+    }
+    let node = this.#head.nextNode;
+    let previousNode = this.#head;
+    let count = 1;
+    while (node !== null) {
+      if (count === index) {
+        previousNode.nextNode = node.nextNode;
+        return;
+      }
+      previousNode = node;
+      node = node.nextNode;
+      count++;
+    }
   }
 }

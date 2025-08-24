@@ -28,7 +28,7 @@ export class LinkedList {
   }
 
   size() {
-    if (!this.#head) return "The list is empty !";
+    if (!this.#head) return 0;
     let size = 1;
     let currentNode = this.#head;
     while (currentNode.nextNode !== null) {
@@ -39,12 +39,12 @@ export class LinkedList {
   }
 
   get head() {
-    if (!this.#head) return "The list is empty !";
+    if (!this.#head) return null;
     return this.#head;
   }
 
   get tail() {
-    if (!this.#head) return "The list is empty !";
+    if (!this.#head) return null;
     let lastNode = this.#head;
     while (lastNode.nextNode !== null) {
       lastNode = lastNode.nextNode;
@@ -53,7 +53,7 @@ export class LinkedList {
   }
 
   at(index) {
-    if (!this.#head) return "The list is empty !";
+    if (!this.#head) return null;
     let targetedNode = null;
     let count = 0;
     let currentNode = this.#head;
@@ -62,20 +62,21 @@ export class LinkedList {
       currentNode = currentNode.nextNode;
       count++;
     }
-    return targetedNode ? targetedNode : "No node at that index !";
+    return targetedNode ? targetedNode : null;
   }
 
   pop() {
-    if (!this.#head) return "The list is empty !";
+    if (!this.#head) return false;
     if (!this.#head.nextNode) {
       this.#head = null;
+      return true;
     } else {
       let node = this.#head.nextNode;
       let previous = this.#head;
       while (node !== null) {
         if (node.nextNode === null) {
           previous.nextNode = null;
-          return;
+          return true;
         }
         previous = node;
         node = node.nextNode;
@@ -84,10 +85,10 @@ export class LinkedList {
   }
 
   contains(value) {
-    if (!this.#head) return "The list is empty !";
+    if (!this.#head) return false;
     let isContains = false;
     let node = this.#head;
-    while (node.nextNode !== null) {
+    while (node !== null) {
       if (node.value === value) {
         return (isContains = true);
       }
@@ -97,12 +98,12 @@ export class LinkedList {
   }
 
   find(value) {
-    if (!this.#head) return "The list is empty !";
+    if (!this.#head) return null;
     let index = 0;
     let node = this.#head;
     while (node !== null) {
       if (node.value === value) {
-        return `Found at index : ${index}`;
+        return index;
       }
       index++;
       node = node.nextNode;
@@ -111,7 +112,7 @@ export class LinkedList {
   }
 
   toString() {
-    if (!this.#head) return "The list is empty !";
+    if (!this.#head) return null;
     let listString = `( ${this.#head.value} ) --> `;
     let node = this.#head.nextNode;
     while (node !== null) {
@@ -124,15 +125,15 @@ export class LinkedList {
   insertAt(value, index) {
     const listeSize = this.size();
 
-    if (!this.#head) return "The list is empty !";
+    if (!this.#head) return false;
     if (index === 0) {
       this.prepend(value);
-      return;
+      return true;
     } else if (index > listeSize) {
       throw new Error(`Max index is ${listeSize}`);
     } else if (index === this.size()) {
       this.append(value);
-      return;
+      return true;
     }
 
     let node = this.#head.nextNode;
@@ -143,7 +144,7 @@ export class LinkedList {
         const newNode = new Node(value);
         previousNode.nextNode = newNode;
         newNode.nextNode = node;
-        return;
+        return true;
       }
       previousNode = node;
       node = node.nextNode;
@@ -153,15 +154,15 @@ export class LinkedList {
 
   removeAt(index) {
     const listeSize = this.size();
-    if (!this.#head) return "The list is empty !";
+    if (!this.#head) return false;
     if (index === 0) {
       this.#head = this.#head.nextNode;
-      return;
+      return true;
     } else if (index > listeSize - 1) {
       throw new Error(`Max index is ${listeSize - 1}`);
     } else if (index === this.size() - 1) {
       this.pop();
-      return;
+      return true;
     }
     let node = this.#head.nextNode;
     let previousNode = this.#head;
@@ -169,7 +170,7 @@ export class LinkedList {
     while (node !== null) {
       if (count === index) {
         previousNode.nextNode = node.nextNode;
-        return;
+        return true;
       }
       previousNode = node;
       node = node.nextNode;

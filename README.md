@@ -38,7 +38,7 @@ Clone the repository and run with NodeJs:
 ```
 git clone https://github.com/chacka1315/linked-lists.git
 cd linked-lists
-node linkedList.js
+node main.js
 ```
 Observe console outputs for demonstration of list operations.
 

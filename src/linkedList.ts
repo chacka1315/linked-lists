@@ -1,11 +1,13 @@
 import { Node } from "./node.js";
-export class LinkedList {
-  #head;
+import { NodeInterface } from "./types.js";
+
+export class LinkedList<T = unknown> {
+  #head:NodeInterface | null;
   constructor() {
     this.#head = null;
   }
 
-  append(value) {
+  append(value:T) {
     if (!this.#head) {
       this.#head = new Node(value);
       return;
@@ -17,7 +19,7 @@ export class LinkedList {
     lastNode.nextNode = new Node(value);
   }
 
-  prepend(value) {
+  prepend(value:T) {
     if (!this.#head) {
       this.#head = new Node(value);
       return;
@@ -52,11 +54,11 @@ export class LinkedList {
     return lastNode;
   }
 
-  at(index) {
+  at(index:number) {
     if (!this.#head) return null;
-    let targetedNode = null;
+    let targetedNode:NodeInterface|null = null;
     let count = 0;
-    let currentNode = this.#head;
+    let currentNode:NodeInterface|null = this.#head;
     while (currentNode && !targetedNode) {
       if (index === count) targetedNode = currentNode;
       currentNode = currentNode.nextNode;
@@ -84,10 +86,10 @@ export class LinkedList {
     }
   }
 
-  contains(value) {
+  contains(value :T) {
     if (!this.#head) return false;
     let isContains = false;
-    let node = this.#head;
+    let node:NodeInterface|null = this.#head;
     while (node !== null) {
       if (node.value === value) {
         return (isContains = true);
@@ -97,10 +99,10 @@ export class LinkedList {
     return isContains;
   }
 
-  find(value) {
+  find(value:T) {
     if (!this.#head) return null;
     let index = 0;
-    let node = this.#head;
+    let node:NodeInterface|null = this.#head;
     while (node !== null) {
       if (node.value === value) {
         return index;
@@ -122,7 +124,7 @@ export class LinkedList {
     return listString + null;
   }
 
-  insertAt(value, index) {
+  insertAt(value:T, index:number) {
     const listeSize = this.size();
 
     if (!this.#head) return false;
@@ -152,7 +154,7 @@ export class LinkedList {
     }
   }
 
-  removeAt(index) {
+  removeAt(index:number) {
     const listeSize = this.size();
     if (!this.#head) return false;
     if (index === 0) {

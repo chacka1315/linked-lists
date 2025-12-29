@@ -46,9 +46,17 @@ Observe console outputs for demonstration of list operations.
 ## 📁 Project Structure
 ```
 linked-lists/
-├── linkedList.js       # LinkedList class implementation
-├── node.js             # Node class for linked list
-├── main.js             # Test/demo file
-├── README.md           # Project documentation
-└── .git/
+├── README.md
+├── dist
+│   ├── linkedList.js
+│   ├── main.js
+│   ├── node.js
+│   └── types.js
+├── package.json
+├── src
+│   ├── linkedList.ts
+│   ├── main.ts
+│   ├── node.ts
+│   └── types.ts
+└── tsconfig.json
 ```

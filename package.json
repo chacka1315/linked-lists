@@ -1,0 +1,21 @@
+{
+  "name": "linked-lists",
+  "version": "1.0.0",
+  "description": "A Linked List data structure implemented in JavaScript, developed as part of the JavaScript curriculum of The Odin Project focusing on Data Structures and Algorithms. This project introduces fundamental data structures, with an emphasis on node-based organization.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chacka1315/linked-lists.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/chacka1315/linked-lists/issues"
+  },
+  "homepage": "https://github.com/chacka1315/linked-lists#readme"
+}
